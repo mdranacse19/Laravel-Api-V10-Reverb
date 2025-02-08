@@ -12,7 +12,7 @@ class MessageController extends Controller
 {
     public function index(): JsonResponse
     {
-        $messages = Message::with('user')->get();
+        $messages = Message::with('user:id,name')->get();
 
         return response()->json($messages);
     }
@@ -31,6 +31,7 @@ class MessageController extends Controller
             'user_id' => $message->user_id,
             'text' => $message->text,
             'time' => $message->created_at,
+            'user_name' => $message->user?->name,
         ]);
 
         return response()->json([
