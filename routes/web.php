@@ -18,9 +18,5 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-Route::get('/broadcast', function () {
-    return broadcast(new Hello());
-});
-
 
 require __DIR__.'/auth.php';
